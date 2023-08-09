@@ -17,7 +17,7 @@ import { RedisModule } from './redis/redis.module';
       password: '123456',
       database: 'meeting_room_booking_system',
       synchronize: true,
-      logging: true,
+      logging: false,
       entities: [User, Role, Permission],
       poolSize: 10,
       connectorPackage: 'mysql2',
