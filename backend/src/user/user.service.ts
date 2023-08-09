@@ -34,7 +34,6 @@ export class UserService {
     const foundUser = await this.userRepository.findOneBy({
       username: user.username,
     });
-    console.log(foundUser);
     if (foundUser) {
       throw new HttpException('用户已存在', HttpStatus.BAD_REQUEST);
     }

@@ -8,6 +8,6 @@ export class UserController {
 
   @Post('register')
   register(@Body() resisterUser: RegisterUserDto) {
-    this.userService.register(resisterUser);
+    return this.userService.register(resisterUser);
   }
 }
