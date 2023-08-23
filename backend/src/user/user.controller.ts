@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Inject, Post, Query } from '@nestjs/common';
 import { UserService } from './user.service';
-import { RegisterUserDto } from './dto/user.dto';
+import { LoginDto, RegisterUserDto } from './dto/user.dto';
 import { EmailService } from 'src/email/email.service';
 import { RedisService } from 'src/redis/redis.service';
 
@@ -17,6 +17,11 @@ export class UserController {
   @Post('register')
   register(@Body() resisterUser: RegisterUserDto) {
     return this.userService.register(resisterUser);
+  }
+
+  @Post('login')
+  async login(@Body() loginDto: LoginDto) {
+    return await this.userService.login(loginDto);
   }
 
   @Get('register-captcha')

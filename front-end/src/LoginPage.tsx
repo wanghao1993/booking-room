@@ -1,8 +1,15 @@
 import React from "react";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, message } from "antd";
+import { loginApi } from "./api/login";
 
 const onFinish = (values: any) => {
   console.log("Success:", values);
+  loginApi({
+    username: values.username,
+    password: values.password,
+  }).then((res) => {
+    message.success("登陆成功");
+  });
 };
 
 const onFinishFailed = (errorInfo: any) => {
@@ -20,8 +27,8 @@ export const Login: React.FC = () => (
     <h1 style={{ marginLeft: "20%" }}>会议室预定系统</h1>
     <Form
       name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
+      labelCol={{ span: 4 }}
+      wrapperCol={{ span: 20 }}
       style={{ maxWidth: 600 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
@@ -43,7 +50,22 @@ export const Login: React.FC = () => (
       >
         <Input.Password />
       </Form.Item>
+      <Form.Item
+        {...{
+          labelCol: { span: 0 },
+          wrapperCol: { span: 24, offset: 4 },
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Button size="small" type="link">
+            创建账号
+          </Button>
 
+          <Button size="small" type="link" danger>
+            忘记密码
+          </Button>
+        </div>
+      </Form.Item>
       <Form.Item<FieldType>
         name="remember"
         valuePropName="checked"
@@ -54,7 +76,7 @@ export const Login: React.FC = () => (
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
         <Button type="primary" htmlType="submit">
-          Submit
+          登录
         </Button>
       </Form.Item>
     </Form>

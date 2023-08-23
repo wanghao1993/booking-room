@@ -35,3 +35,15 @@ export class RegisterUserDto {
   })
   captcha: string;
 }
+
+export class LoginDto {
+  @IsNotEmpty({
+    message: '用户名不能为空',
+  })
+  username: string;
+
+  @IsNotEmpty({
+    message: '用户名不能为空',
+  })
+  password: string;
+}

@@ -11,7 +11,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new CustomExceptionFilter());
   app.useGlobalInterceptors(new FormatResponseInterceptor());
-
+  app.enableCors();
   const configService = app.get(ConfigService);
   await app.listen(configService.get('nest_server_port'));
 }
