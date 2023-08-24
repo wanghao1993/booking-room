@@ -21,3 +21,8 @@ dfhttp.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+dfhttp.interceptors.request.use(function (config) {
+  config.headers["Authorization"] = localStorage.getItem("token");
+  return config;
+});

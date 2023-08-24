@@ -3,11 +3,11 @@ import { Button, Checkbox, Form, Input, message } from "antd";
 import { loginApi } from "./api/login";
 
 const onFinish = (values: any) => {
-  console.log("Success:", values);
   loginApi({
     username: values.username,
     password: values.password,
   }).then((res) => {
+    localStorage.setItem("token", res.data.accessToken);
     message.success("登陆成功");
   });
 };

@@ -10,6 +10,9 @@ import { RedisModule } from './redis/redis.module';
 import { EmailModule } from './email/email.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
+import { APP_GUARD } from '@nestjs/core';
+import { PermissionGuardGuard } from './permission-guard/permission-guard.guard';
+import { LoginGuard } from './login-guard/login-guard.guard';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -54,6 +57,16 @@ import { JwtModule } from '@nestjs/jwt';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: PermissionGuardGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: LoginGuard,
+    },
+  ],
 })
 export class AppModule {}

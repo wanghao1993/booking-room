@@ -4,7 +4,6 @@ import { ValidationPipe } from '@nestjs/common';
 import { CustomExceptionFilter } from 'custom-exception.filter';
 import { FormatResponseInterceptor } from 'format-response';
 import { ConfigService } from '@nestjs/config';
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
