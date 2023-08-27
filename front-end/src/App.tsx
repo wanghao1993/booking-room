@@ -1,19 +1,11 @@
-import React, { useState } from "react";
-import "./App.css";
+import { useRouterReEa } from "./hooks/h";
+import RouterList from "./route";
 
 function App() {
-  const [list] = useState({
-    coinType: "DOGE",
-    data: [10, 20, 30],
-  });
+  useRouterReEa();
   return (
     <div className="App">
-      {list.data.map((item) => (
-        <div>
-          {item}
-          {list.coinType}
-        </div>
-      ))}
+      <RouterList></RouterList>
     </div>
   );
 }

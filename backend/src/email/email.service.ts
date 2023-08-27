@@ -17,14 +17,14 @@ export class EmailService {
     });
   }
 
-  async sendMail({ to, subject, html }) {
+  async sendMail({ to, html }) {
     await this.transporter.sendMail({
       from: {
         name: '会议室预定系统',
         address: '2682265436@qq.com',
       },
       to,
-      subject,
+      subject: '注册验证码',
       html,
     });
   }

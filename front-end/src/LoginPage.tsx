@@ -1,13 +1,15 @@
 import React from "react";
 import { Button, Checkbox, Form, Input, message } from "antd";
 import { loginApi } from "./api/login";
-
+import { TOKEN_KEY } from "./constant";
+import { Link } from "react-router-dom";
 const onFinish = (values: any) => {
   loginApi({
     username: values.username,
     password: values.password,
   }).then((res) => {
-    localStorage.setItem("token", res.data.accessToken);
+    localStorage.setItem(TOKEN_KEY, res.accessToken);
+    window.location.replace("/home");
     message.success("登陆成功");
   });
 };
@@ -24,7 +26,6 @@ type FieldType = {
 
 export const Login: React.FC = () => (
   <div>
-    <h1 style={{ marginLeft: "20%" }}>会议室预定系统</h1>
     <Form
       name="basic"
       labelCol={{ span: 4 }}
@@ -57,9 +58,7 @@ export const Login: React.FC = () => (
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <Button size="small" type="link">
-            创建账号
-          </Button>
+          <Link to={{ pathname: "/register" }}>创建账号</Link>
 
           <Button size="small" type="link" danger>
             忘记密码

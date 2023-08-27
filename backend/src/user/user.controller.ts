@@ -39,7 +39,7 @@ export class UserController {
     return await this.userService.login(loginDto);
   }
 
-  @Get('register-captcha')
+  @Get('register_captcha')
   async captcha(@Query('address') address: string) {
     const code = Math.random().toString().slice(2, 8);
 
@@ -47,7 +47,6 @@ export class UserController {
 
     await this.emailService.sendMail({
       to: address,
-      subject: '注册验证码',
       html: `<p>你的注册验证码是 ${code}</p>`,
     });
     return '发送成功';
