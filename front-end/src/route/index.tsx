@@ -7,7 +7,7 @@ import { Login } from "../LoginPage";
 import { UpdatePwd } from "../UpdatePwd";
 import { HomePage } from "../views/home";
 const list = [
-  { path: "/home", Element: <HomePage></HomePage> },
+  { path: "/home", element: <HomePage></HomePage> },
   {
     path: "register",
     element: <Register />,
