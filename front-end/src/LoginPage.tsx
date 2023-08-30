@@ -24,8 +24,15 @@ type FieldType = {
   remember?: string;
 };
 
+const pageStyle: React.CSSProperties = {
+  height: "100vh",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
+
 export const Login: React.FC = () => (
-  <div>
+  <div style={pageStyle}>
     <Form
       name="basic"
       labelCol={{ span: 4 }}

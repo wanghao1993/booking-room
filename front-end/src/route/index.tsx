@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import React, { Suspense } from "react";
 
-import Layout from "../layout/index";
+import Layouts from "../layout/index";
 import { Register } from "../Register";
 import { Login } from "../LoginPage";
 import { UpdatePwd } from "../UpdatePwd";
@@ -23,7 +23,7 @@ function RouterList() {
     <Suspense fallback={<div>loading...</div>}>
       <Routes>
         <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="/" element={<Layout></Layout>}>
+        <Route path="/" element={<Layouts></Layouts>}>
           {ListItem(list)}
         </Route>
       </Routes>

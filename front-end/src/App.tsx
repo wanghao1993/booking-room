@@ -1,5 +1,6 @@
 import { useRouterReEa } from "./hooks/h";
 import RouterList from "./route";
+import "./index.css";
 
 function App() {
   useRouterReEa();

@@ -7,19 +7,27 @@ export function useRouterReEa() {
   let navigate = useNavigate();
 
   useEffect(() => {
+    const whiteListPath = ["/login", "/register"];
+
     if (location.pathname !== "/login") {
       //内部页面
       //判断用户是否登录
-      if (!localStorage.getItem(TOKEN_KEY)) {
-        // 没有登录
-        //去登录页面
-        navigate("/login", { replace: true });
-      } else {
-        //登录了
-        if (location.pathname === "/") {
-          navigate("/", { replace: true });
+      if (!whiteListPath.includes(location.pathname)) {
+        if (!localStorage.getItem(TOKEN_KEY)) {
+          // 没有登录
+          //去登录页面
+          navigate("/login", { replace: true });
+        } else {
+          //登录了
+          if (location.pathname === "/") {
+            navigate("/home", { replace: true });
+          }
         }
       }
+    } else {
+      if (localStorage.getItem(TOKEN_KEY)) {
+        navigate("/home");
+      }
     }
-  }, [location.pathname]);
+  }, [location.pathname, navigate]);
 }
