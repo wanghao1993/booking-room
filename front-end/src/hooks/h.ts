@@ -7,7 +7,7 @@ export function useRouterReEa() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const whiteListPath = ["/login", "/register"];
+    const whiteListPath = ["/login", "/register", "/update-password"];
 
     if (location.pathname !== "/login") {
       //内部页面

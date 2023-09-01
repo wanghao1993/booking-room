@@ -37,7 +37,7 @@ export const Login: React.FC = () => (
       name="basic"
       labelCol={{ span: 4 }}
       wrapperCol={{ span: 20 }}
-      style={{ maxWidth: 600 }}
+      style={{ minWidth: 400 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
@@ -67,21 +67,23 @@ export const Login: React.FC = () => (
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Link to={{ pathname: "/register" }}>创建账号</Link>
 
-          <Button size="small" type="link" danger>
-            忘记密码
-          </Button>
+          <Link to={{ pathname: "/update-password" }}>
+            <Button size="small" type="link" danger>
+              忘记密码
+            </Button>
+          </Link>
         </div>
       </Form.Item>
       <Form.Item<FieldType>
         name="remember"
         valuePropName="checked"
-        wrapperCol={{ offset: 8, span: 16 }}
+        wrapperCol={{ offset: 4, span: 16 }}
       >
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit">
+      <Form.Item wrapperCol={{ offset: 4, span: 20 }}>
+        <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
           登录
         </Button>
       </Form.Item>
